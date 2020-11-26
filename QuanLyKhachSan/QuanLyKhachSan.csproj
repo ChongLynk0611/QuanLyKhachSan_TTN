@@ -92,6 +92,12 @@
     <Compile Include="frmReportHD.Designer.cs">
       <DependentUpon>frmReportHD.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Home_GUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Home_GUI.Designer.cs">
+      <DependentUpon>Home_GUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QLKSCDataSet.Designer.cs">
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportHD.resx">
       <DependentUpon>frmReportHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Home_GUI.resx">
+      <DependentUpon>Home_GUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
