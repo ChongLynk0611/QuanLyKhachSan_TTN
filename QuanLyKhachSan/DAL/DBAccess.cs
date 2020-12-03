@@ -23,7 +23,7 @@ namespace QuanLyKhachSan.DAL
         //Kết nối
         public void connectDB()
         {
-            string strCon = @"Data Source=.\SQLEXPRESS;Initial Catalog=QLKSC;Integrated Security=True";
+            string strCon = @"Data Source=.;Initial Catalog=QLKSC;Integrated Security=True";
             con = new SqlConnection(strCon);
             try
             {
