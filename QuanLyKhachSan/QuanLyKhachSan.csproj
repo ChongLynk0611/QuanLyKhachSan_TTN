@@ -69,6 +69,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\ChiTietDatPhong_BLL.cs" />
+    <Compile Include="BLL\DatPhong_BLL.cs" />
     <Compile Include="BLL\HoaDon_BLL.cs" />
     <Compile Include="DAL\DBAccess.cs" />
     <Compile Include="DTO\ChucVu_DTO.cs" />
