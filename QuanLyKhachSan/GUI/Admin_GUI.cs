@@ -18,12 +18,10 @@ namespace QuanLyKhachSan.GUI
         Admin_BLL adbl = new Admin_BLL();
         DBAccess db = new DBAccess();
         string id = "";
-
         public Admin_GUI()
         {
             InitializeComponent();
         }
-
         private void bindDataAd()
         {
             DataRow r = adbl.infoAdmin(frmLogin.mnv);
@@ -48,98 +46,5 @@ namespace QuanLyKhachSan.GUI
             cbmanv.DisplayMember = "manv";
         }
 
-        private void Admin_GUI_Load(object sender, EventArgs e)
-        {
-            bindDataAd();
-            bindDataCbNV();
-            if (db.checkExist("quyennv", "manv", cbmanv.SelectedValue.ToString()))
-            {
-                txtqh.Text = adbl.quyennv(cbmanv.SelectedValue.ToString());
-            }
-            else
-            {
-                txtqh.Text = "Chưa phân quyền";
-            }
-        }
-
-        private void cbmanv_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (db.checkExist("quyennv", "manv", cbmanv.SelectedValue.ToString()))
-            {
-                txtqh.Text = adbl.quyennv(cbmanv.SelectedValue.ToString());
-            }
-            else
-            {
-                txtqh.Text = "Chưa phân quyền";
-            }
-        }
-
-        private void btnPhanQuyen_Click(object sender, EventArgs e)
-        {
-            panelpq.Enabled = true;
-        }
-
-        private void btnCapNhat_Click(object sender, EventArgs e)
-        {
-            string sql = "Insert Into quyennv Values('"+cbmanv.SelectedValue.ToString()+"','"+id+"','"+txtmknv.Text+"')";
-            string sql2 = "Update quyennv set id='" + id + "',matkhau='" + txtmknv.Text + "' where manv = '" + cbmanv.SelectedValue.ToString() + "'";
-            if (txtmknv.Text.Length == 3)
-            {
-                thongbao.Text = "";
-                if (!db.checkExist("quyennv", "manv", cbmanv.SelectedValue.ToString()))
-                {
-                    if (db.ExecuteQuery(sql))
-                    {
-                        rdbqt.Checked = false;
-                        rdbnv.Checked = false;
-                        rdbkhach.Checked = false;
-                        txtmknv.Text = "";
-                        panelpq.Enabled = false;
-                        thongbao.Text = "";
-                    }
-                }
-                else
-                {
-                    if (db.ExecuteQuery(sql2))
-                    {
-                        rdbqt.Checked = false;
-                        rdbnv.Checked = false;
-                        rdbkhach.Checked = false;
-                        txtmknv.Text = "";
-                        panelpq.Enabled = false;
-                        thongbao.Text = "";
-                    }
-                }
-            }
-            else
-            {
-                thongbao.Text = "Mật khẩu gồm 3 ký tự!";
-            }
-        }
-
-        private void rdbqt_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton rdb = (RadioButton)sender;
-            if (rdb.Text == "Quản trị")
-                id = "A";
-            else
-                if (rdb.Text == "Nhân viên")
-                    id = "B";
-                else
-                    id = "C";
-        }
-
-        private void txtmknv_TextChanged(object sender, EventArgs e)
-        {
-            if (txtmknv.Text.Length != 3)
-            {
-                thongbao.Text = "Mật khẩu gồm 3 ký tự!";
-            }
-            else
-            {
-                thongbao.Text = "";
-            }
-
-        }
     }
 }
