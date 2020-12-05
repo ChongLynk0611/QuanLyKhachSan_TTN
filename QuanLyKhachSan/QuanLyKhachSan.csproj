@@ -99,6 +99,10 @@
     <Compile Include="GUI\AddNV_GUI.Designer.cs">
       <DependentUpon>AddNV_GUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Deluxe_GUI.cs" />
+    <Compile Include="GUI\Deluxe_GUI.Designer.cs">
+      <DependentUpon>Deluxe_GUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Home_GUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\AddNV_GUI.resx">
       <DependentUpon>AddNV_GUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Deluxe_GUI.resx">
+      <DependentUpon>Deluxe_GUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Home_GUI.resx">
       <DependentUpon>Home_GUI.cs</DependentUpon>
