@@ -112,5 +112,29 @@ namespace QuanLyKhachSan.GUI
                 thongbao.Text = "Mật khẩu gồm 3 ký tự!";
             }
         }
+        private void rdbqt_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rdb = (RadioButton)sender;
+            if (rdb.Text == "Quản trị")
+                id = "A";
+            else
+                if (rdb.Text == "Nhân viên")
+                id = "B";
+            else
+                id = "C";
+        }
+
+        private void txtmknv_TextChanged(object sender, EventArgs e)
+        {
+            if (txtmknv.Text.Length != 3)
+            {
+                thongbao.Text = "Mật khẩu gồm 3 ký tự!";
+            }
+            else
+            {
+                thongbao.Text = "";
+            }
+
+        }
     }
 }
