@@ -69,6 +69,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\ChiTietDatPhong_BLL.cs" />
+    <Compile Include="BLL\DatPhong_BLL.cs" />
     <Compile Include="BLL\HoaDon_BLL.cs" />
     <Compile Include="DAL\DBAccess.cs" />
     <Compile Include="DTO\ChucVu_DTO.cs" />
@@ -92,6 +94,12 @@
     <Compile Include="frmReportHD.Designer.cs">
       <DependentUpon>frmReportHD.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\AddKH_GUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\AddKH_GUI.Designer.cs">
+      <DependentUpon>AddKH_GUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Home_GUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -110,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportHD.resx">
       <DependentUpon>frmReportHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\AddKH_GUI.resx">
+      <DependentUpon>AddKH_GUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Home_GUI.resx">
       <DependentUpon>Home_GUI.cs</DependentUpon>
