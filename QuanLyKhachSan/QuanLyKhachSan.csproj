@@ -70,7 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\HoaDon_BLL.cs" />
+    <Compile Include="BLL\LoaiPhong_BLL.cs" />
     <Compile Include="BLL\NhanVien_BLL.cs" />
+    <Compile Include="BLL\Phong_BLL.cs" />
     <Compile Include="DAL\DBAccess.cs" />
     <Compile Include="DTO\ChucVu_DTO.cs" />
     <Compile Include="DTO\CTDP_DTO.cs" />
