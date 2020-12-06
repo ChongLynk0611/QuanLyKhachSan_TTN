@@ -109,6 +109,10 @@
     <Compile Include="GUI\Home_GUI.Designer.cs">
       <DependentUpon>Home_GUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Standard_GUI.cs" />
+    <Compile Include="GUI\Standard_GUI.Designer.cs">
+      <DependentUpon>Standard_GUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QLKSCDataSet.Designer.cs">
@@ -130,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Home_GUI.resx">
       <DependentUpon>Home_GUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Standard_GUI.resx">
+      <DependentUpon>Standard_GUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
