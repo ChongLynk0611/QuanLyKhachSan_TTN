@@ -46,6 +46,36 @@ namespace QuanLyKhachSan.GUI
             txtdc.Enabled = true;
         }
 
-       
+        private void hidetxtkh()
+        {
+            txthoten.Enabled = false;
+            txtcmnd.Enabled = false;
+            txtsdt.Enabled = false;
+            txtemail.Enabled = false;
+            txtdc.Enabled = false;
+        }
+
+        private void cleartxtkh()
+        {
+            txthoten.Text = "";
+            txtcmnd.Text = "";
+            txtsdt.Text = "";
+            txtemail.Text = "";
+            txtdc.Text = "";
+            txthoten.Focus();
+        }
+
+        private void clearbindkh()
+        {
+            txtmakh.DataBindings.Clear();
+            txthoten.DataBindings.Clear();
+            txtsdt.DataBindings.Clear();
+            txtcmnd.DataBindings.Clear();
+            txtemail.DataBindings.Clear();
+            txtdc.DataBindings.Clear();
+            dgvkh.DataBindings.Clear();
+        }
+
+        
     }
 }
