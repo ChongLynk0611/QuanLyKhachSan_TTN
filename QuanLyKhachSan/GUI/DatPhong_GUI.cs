@@ -217,6 +217,164 @@ namespace QuanLyKhachSan.GUI
             btnClearAll.Enabled = false;
         }
 
+        private void btnthem_Click(object sender, EventArgs e)
+        {
+            t = 1;
+            if (btnthem.Text == "Thêm")
+            {
+                limitdate();
+                btnthem.Text = "Hủy bỏ";
+                enablemove();
+                showtxtdp();
+                cleartxtdp();
+                listDatphong.DataSource = null;
+                listDatphong.DataBindings.Clear();
+                txtmadp.Text = setmadp();
+                txtmanv.Text = frmLogin.mnv;
+                txtLpDat.Text = cbloaiphong.SelectedValue.ToString();
+                btnluu.Enabled = true;
+                btnsua.Enabled = false;
+                btnxoa.Enabled = false;
+                dgvdp.Enabled = false;
+            }
+            else
+            {
+                nolimitdate();
+                btnthem.Text = "Thêm";
+                arr.Clear();
+                arr1.Clear();
+                disablemove();
+                hidetxtdp();
+                bindatadp();
+                bindatalistphong();
+                btnluu.Enabled = false;
+                btnsua.Enabled = true;
+                btnxoa.Enabled = true;
+                dgvdp.Enabled = true;
+            }
+        }
 
+        private void btnsua_Click(object sender, EventArgs e)
+        {
+            t = 2;
+            if (btnsua.Text == "Sửa")
+            {
+                btnsua.Text = "Hủy bỏ";
+                showtxtdp();
+                txtmakh.Focus();
+                btnthem.Enabled = false;
+                btnxoa.Enabled = false;
+                btnluu.Enabled = true;
+                dgvdp.Enabled = false;
+            }
+            else
+            {
+                btnsua.Text = "Sửa";
+                hidetxtdp();
+                btnthem.Enabled = true;
+                btnxoa.Enabled = true;
+                btnluu.Enabled = false;
+                dgvdp.Enabled = true;
+            }
+        }
+
+        private void btnluu_Click(object sender, EventArgs e)
+        {
+            if (db.checkExist("khachhang", "makh", txtmakh.Text))
+            {
+                if (t == 1)
+                {
+                    DatPhong_DTO dp = getdatadp();
+                    if (dpbl.adddp(dp))
+                    {
+                        int d = 0;
+                        if (arr.Count == 0)
+                        {
+                            setarr1();
+                            for (int i = 0; i < arr1.Count; i++)
+                            {
+                                if (ctdpbl.addctdp(getdatactdp(arr1, i)))
+                                {
+                                    pbl.capnhatphong(arr1[i].ToString());
+                                    lpbl.truslph(cbloaiphong.SelectedValue.ToString());
+                                    d++;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 0; i < arr.Count; i++)
+                            {
+                                if (ctdpbl.addctdp(getdatactdp(arr, i)))
+                                {
+                                    pbl.capnhatphong(arr[i].ToString());
+                                    lpbl.truslph(cbloaiphong.SelectedValue.ToString());
+                                    d++;
+                                }
+                            }
+                        }
+                        if (d != 0)
+                            MessageBox.Show("Đặt phòng thành công!");
+                        else
+                            MessageBox.Show("Đặt phòng thất bại!");
+                        bindatadp();
+                        hidetxtdp();
+                        arr.Clear();
+                        arr1.Clear();
+                        disablemove();
+                        bindatalistphong();
+                        btnthem.Text = "Thêm";
+                        btnthem.Enabled = true;
+                        btnsua.Enabled = true;
+                        btnxoa.Enabled = true;
+                        btnluu.Enabled = false;
+                        dgvdp.Enabled = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Có lỗi xảy ra. Đặt phòng thất bại!");
+                    }
+                }
+                if (t == 2)
+                {
+                    DatPhong_DTO dp = getdatadp();
+                    if (dpbl.editdp(dp))
+                    {
+                        //DataTable dtb = (ctdpbl.dsdpct(txtmadp.Text));
+                        //for (int i = 0; i < dtb.Rows.Count; i++)
+                        //{
+                        //    DataRow r = dtb.Rows[i];
+                        //    pbl.traphong(r[0].ToString());
+                        //    lpbl.congslph(txtLpDat.Text);
+                        //}
+                        MessageBox.Show("Chỉnh sửa thành công!");
+                        bindatadp();
+                        hidetxtdp();
+                        btnsua.Text = "Sửa";
+                        btnthem.Enabled = true;
+                        btnxoa.Enabled = true;
+                        btnluu.Enabled = false;
+                        dgvdp.Enabled = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Có lỗi xảy ra. Chỉnh sửa thất bại!");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Mã khách hàng không đúng! Vui lòng nhập lại.");
+            }
+        }
+
+        private int getTongtien()
+        {
+            int tg = 0;
+            tg = lpbl.getGiaphong(txtLpDat.Text)*int.Parse(txtsoluong.Text);
+            return tg;
+        }
+
+       
     }
 }
