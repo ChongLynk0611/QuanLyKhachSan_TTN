@@ -39,5 +39,28 @@ namespace QuanLyKhachSan.GUI
             txt2 = txtNangCao2.Text;
             txt3 = txtNangCao3.Text;
         }
+        private void getData1(string dk, string txt)
+        {
+            dgvkh.DataBindings.Clear();
+            string sql = "Select * From khachhang Where " + dk + " like '%" + txt + "%'";
+            DataTable dtb = db.getDS(sql);
+            dgvkh.DataSource = dtb;
+        }
+
+        private void getData2(string dk1, string dk2, string txt1, string txt2, string ao1)
+        {
+            dgvkh.DataBindings.Clear();
+            string sql = "Select * From khachhang Where " + dk1 + " like '%" + txt1 + "%' " + ao1 + " " + dk2 + " like '%" + txt2 + "%'";
+            DataTable dtb = db.getDS(sql);
+            dgvkh.DataSource = dtb;
+        }
+
+        private void getData3(string dk1, string dk2, string dk3, string txt1, string txt2, string txt3, string ao1, string ao2)
+        {
+            dgvkh.DataBindings.Clear();
+            string sql = "Select * From khachhang Where " + dk1 + " like '%" + txt1 + "%' " + ao1 + " " + dk2 + " like '%" + txt2 + "%' " + ao2 + " " + dk3 + " like '%" + txt3 + "%'";
+            DataTable dtb = db.getDS(sql);
+            dgvkh.DataSource = dtb;
+        }
     }
 }
