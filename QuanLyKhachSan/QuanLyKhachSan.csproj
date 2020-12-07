@@ -95,11 +95,19 @@
     <Compile Include="frmReportHD.Designer.cs">
       <DependentUpon>frmReportHD.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="GUI\DatPhong_GUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GUI\DatPhong_GUI.designer.cs">
       <DependentUpon>DatPhong_GUI.cs</DependentUpon>
+=======
+    <Compile Include="GUI\AddKH_GUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\AddKH_GUI.Designer.cs">
+      <DependentUpon>AddKH_GUI.cs</DependentUpon>
+>>>>>>> origin/BT_ThemKhachHang
     </Compile>
     <Compile Include="GUI\Home_GUI.cs">
       <SubType>UserControl</SubType>
@@ -120,8 +128,13 @@
     <EmbeddedResource Include="frmReportHD.resx">
       <DependentUpon>frmReportHD.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="GUI\DatPhong_GUI.resx">
       <DependentUpon>DatPhong_GUI.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="GUI\AddKH_GUI.resx">
+      <DependentUpon>AddKH_GUI.cs</DependentUpon>
+>>>>>>> origin/BT_ThemKhachHang
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Home_GUI.resx">
       <DependentUpon>Home_GUI.cs</DependentUpon>
