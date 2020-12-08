@@ -62,5 +62,89 @@ namespace QuanLyKhachSan.GUI
             DataTable dtb = db.getDS(sql);
             dgvkh.DataSource = dtb;
         }
+        private void btnCoBan_Click(object sender, EventArgs e)
+        {
+            gettxtcb();
+            if (dk0 == "")
+            {
+                MessageBox.Show("Chưa chọn điều kiện!");
+            }
+            else
+            {
+                getData1(dk0, txt0);
+            }
+
+        }
+
+        private void btnNangCao_Click(object sender, EventArgs e)
+        {
+            gettxtnc();
+            if (dk1 == "" && dk2 == "" && dk3 == "")
+            {
+                MessageBox.Show("Chọn ít nhất 1 điều kiện!");
+            }
+            else
+            {
+                if (dk1 != "" && dk2 == "" && dk3 == "")
+                {
+                    getData1(dk1, txt1);
+                }
+                else
+                {
+                    if (dk1 == "" && dk2 != "" && dk3 == "")
+                    {
+                        getData1(dk2, txt2);
+                    }
+                    else
+                    {
+                        if (dk1 == "" && dk2 == "" && dk3 != "")
+                        {
+                            getData1(dk3, txt3);
+                        }
+                    }
+                }
+
+            }
+
+            if (dk1 != "" && dk2 != "" && dk3 != "")
+            {
+                if (and_or1 == "" || and_or2 == "")
+                {
+                    MessageBox.Show("Chọn 2 điều kiện kết hợp AND và OR");
+                }
+                else
+                {
+                    getData3(dk1, dk2, dk3, txt1, txt2, txt3, and_or1, and_or2);
+                }
+            }
+            else
+            {
+                if (dk1 != "" && dk2 != "" && dk3 == "")
+                {
+                    if (and_or1 == "")
+                    {
+                        MessageBox.Show("Chọn 1 điều kiện kết hợp AND và OR");
+                    }
+                    else
+                    {
+                        getData2(dk1, dk2, txt1, txt2, and_or1);
+                    }
+                }
+                else
+                {
+                    if (dk1 == "" && dk2 != "" && dk3 != "")
+                    {
+                        if (and_or2 == "")
+                        {
+                            MessageBox.Show("Chọn 1 điều kiện kết hợp AND và OR");
+                        }
+                        else
+                        {
+                            getData2(dk2, dk3, txt2, txt3, and_or2);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
