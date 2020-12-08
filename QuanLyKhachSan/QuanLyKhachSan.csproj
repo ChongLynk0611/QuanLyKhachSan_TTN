@@ -72,7 +72,13 @@
     <Compile Include="BLL\ChiTietDatPhong_BLL.cs" />
     <Compile Include="BLL\DatPhong_BLL.cs" />
     <Compile Include="BLL\HoaDon_BLL.cs" />
+<<<<<<< HEAD
     <Compile Include="BLL\KhachHang_BLL.cs" />
+=======
+    <Compile Include="BLL\LoaiPhong_BLL.cs" />
+    <Compile Include="BLL\NhanVien_BLL.cs" />
+    <Compile Include="BLL\Phong_BLL.cs" />
+>>>>>>> origin/TQ_Deluxe
     <Compile Include="DAL\DBAccess.cs" />
     <Compile Include="DTO\ChucVu_DTO.cs" />
     <Compile Include="DTO\CTDP_DTO.cs" />
@@ -96,6 +102,7 @@
       <DependentUpon>frmReportHD.cs</DependentUpon>
     </Compile>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Compile Include="GUI\DatPhong_GUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -108,6 +115,15 @@
     <Compile Include="GUI\AddKH_GUI.Designer.cs">
       <DependentUpon>AddKH_GUI.cs</DependentUpon>
 >>>>>>> origin/BT_ThemKhachHang
+=======
+    <Compile Include="GUI\AddNV_GUI.cs" />
+    <Compile Include="GUI\AddNV_GUI.Designer.cs">
+      <DependentUpon>AddNV_GUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Deluxe_GUI.cs" />
+    <Compile Include="GUI\Deluxe_GUI.Designer.cs">
+      <DependentUpon>Deluxe_GUI.cs</DependentUpon>
+>>>>>>> origin/TQ_Deluxe
     </Compile>
     <Compile Include="GUI\Home_GUI.cs">
       <SubType>UserControl</SubType>
@@ -129,12 +145,20 @@
       <DependentUpon>frmReportHD.cs</DependentUpon>
     </EmbeddedResource>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <EmbeddedResource Include="GUI\DatPhong_GUI.resx">
       <DependentUpon>DatPhong_GUI.cs</DependentUpon>
 =======
     <EmbeddedResource Include="GUI\AddKH_GUI.resx">
       <DependentUpon>AddKH_GUI.cs</DependentUpon>
 >>>>>>> origin/BT_ThemKhachHang
+=======
+    <EmbeddedResource Include="GUI\AddNV_GUI.resx">
+      <DependentUpon>AddNV_GUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Deluxe_GUI.resx">
+      <DependentUpon>Deluxe_GUI.cs</DependentUpon>
+>>>>>>> origin/TQ_Deluxe
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Home_GUI.resx">
       <DependentUpon>Home_GUI.cs</DependentUpon>
