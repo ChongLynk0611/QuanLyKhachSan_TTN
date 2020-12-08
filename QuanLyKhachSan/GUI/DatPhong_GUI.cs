@@ -375,6 +375,135 @@ namespace QuanLyKhachSan.GUI
             return tg;
         }
 
-       
+        private string getmahd()
+        {
+            int id;
+            id = int.Parse(db.GetLastID("hoadon", "mahd").Substring(2, 3));
+            if (id < 9)
+                return "HD00" + (id + 1).ToString();
+            else
+                if (id < 99)
+                    return "HD0" + (id + 1).ToString();
+                else
+                    return "HD" + (id + 1).ToString();
+        }
+
+        private HoaDon_DTO getdatahd()
+        {
+            HoaDon_DTO hd = new HoaDon_DTO();
+            hd.Mahd = getmahd();
+            hd.Madp = txtmadp.Text;
+            hd.Ngaylap = DateTime.Today;
+            hd.Tongtien = getTongtien();
+            return hd;
+        }
+
+        public ArrayList getdspd()
+        {
+            ArrayList a = new ArrayList();
+            DataTable dtb = ctdpbl.dsdpct(txtmadp.Text);
+            for (int i = 0; i < dtb.Rows.Count; i++)
+            {
+                DataRow r = dtb.Rows[i];
+                a.Add(r[0].ToString());
+            }
+            return a;
+        }
+
+        private void btnxoa_Click(object sender, EventArgs e)
+        {
+            if (ckbtrangtrai.Checked == false)
+            {
+                if (MessageBox.Show("Phòng chưa trả!"+System.Environment.NewLine+"Bạn có muốn cập nhật trạng thái phòng và thanh toán?.", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    madatphong = txtmadp.Text;
+                    if (dpbl.capnhattrangthai(txtmadp.Text, true))
+                    {
+                        for (int i = 0; i < getdspd().Count; i++)
+                        {
+                            pbl.traphong(getdspd()[i].ToString());
+                            lpbl.congslph(txtLpDat.Text);
+                        }
+                        HoaDon_DTO hd = getdatahd();
+                        if (hdbl.laphoadon(hd))
+                        {
+                            MessageBox.Show("Cập nhật thành công!");
+                            new frmReportHD().Show();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                madatphong = txtmadp.Text;
+                new frmReportHD().Show();
+            }
+        }
+
+        private void setarr1()
+        {
+            DataTable dtb = new DataTable();
+            tenlp = cbloaiphong.SelectedValue.ToString();
+            dtb = pbl.dsph(tenlp);
+
+            for (int i = 0; i < dtb.Rows.Count; i++)
+            {
+                DataRow r = dtb.Rows[i];
+                arr1.Add(r[0]);
+            }
+        }
+
+        private void btnAddAll_Click(object sender, EventArgs e)
+        {
+            arr.Clear();
+            arr1.Clear();
+            btnClearOne.Enabled = false;
+            btnAddOne.Enabled = false;
+            BindingSource bsp = new BindingSource();
+            tenlp = cbloaiphong.SelectedValue.ToString();
+            bsp.DataSource = pbl.dsph(tenlp);
+            listDatphong.DataBindings.Clear();
+            listDatphong.DataSource = bsp;
+            listDatphong.DisplayMember = "maphong";
+            listDatphong.ValueMember = "maphong";
+            listPhong.DataSource = null;
+            listPhong.DataBindings.Clear();
+            txtsoluong.Text = pbl.dsph(tenlp).Rows.Count.ToString();
+            txttiencoc.Text = lpbl.getTiendatcoc(cbloaiphong.SelectedValue.ToString(), int.Parse(txtsoluong.Text)).ToString();
+        }
+
+        private void btnAddOne_Click(object sender, EventArgs e)
+        {
+            if (arr1.Count == 0)
+            {
+                setarr1();
+            }
+
+            listDatphong.DataSource = null;
+            listDatphong.DataBindings.Clear();
+            if (listPhong.SelectedIndex > -1)
+            {
+                arr.Add(listPhong.SelectedValue);
+                arr1.RemoveAt(listPhong.SelectedIndex);
+            }
+            listPhong.ClearSelected();
+            BindingSource bsOne = new BindingSource();
+            bsOne.DataSource = arr;
+            listDatphong.DataSource = bsOne;
+
+            listPhong.DataSource = null;
+            listPhong.DataBindings.Clear();
+            listPhong.DataSource = arr1;
+
+            if (arr.Count != 0)
+                btnClearOne.Enabled = true;
+
+            if (arr1.Count == 0)
+                btnAddOne.Enabled = false;
+            else
+                btnAddOne.Enabled = true;
+        }
+
+        
     }
 }
