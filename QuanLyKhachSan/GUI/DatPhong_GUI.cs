@@ -504,6 +504,40 @@ namespace QuanLyKhachSan.GUI
                 btnAddOne.Enabled = true;
         }
 
-        
+        private void btnClearOne_Click(object sender, EventArgs e)
+        {
+            string tmp = arr[listDatphong.SelectedIndex].ToString();
+            arr.RemoveAt(listDatphong.SelectedIndex);
+            arr1.Add(tmp);
+            listPhong.DataSource = null;
+            listPhong.DataBindings.Clear();
+            listPhong.DataSource = arr1;
+            listDatphong.DataSource = null;
+            listDatphong.DataBindings.Clear();
+            listDatphong.DataSource = arr;
+            btnAddOne.Enabled = true;
+            if (arr.Count == 0)
+                btnClearOne.Enabled = false;
+            else
+                btnClearOne.Enabled = true;
+        }
+
+        private void btnClearAll_Click(object sender, EventArgs e)
+        {
+            arr.Clear();
+            arr1.Clear();
+            btnAddOne.Enabled = true;
+            btnClearOne.Enabled = false;
+            bindatalistphong();
+            listDatphong.DataSource = null;
+            listDatphong.DataBindings.Clear();
+            txtsoluong.Text = "0";
+        }
+
+        private void listDatphong_DataSourceChanged(object sender, EventArgs e)
+        {
+            txtsoluong.Text = arr.Count.ToString();
+            txttiencoc.Text = lpbl.getTiendatcoc(cbloaiphong.SelectedValue.ToString(), int.Parse(txtsoluong.Text)).ToString();
+        }
     }
 }
