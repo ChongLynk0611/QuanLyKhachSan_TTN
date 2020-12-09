@@ -146,5 +146,34 @@ namespace QuanLyKhachSan.GUI
                 }
             }
         }
+        private void cbDkDG_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dk0 = cbDkDG.SelectedItem.ToString();
+        }
+
+        private void cbDkNC1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dk1 = cbDkNC1.SelectedItem.ToString();
+        }
+
+        private void cbDkNC2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dk2 = cbDkNC2.SelectedItem.ToString();
+        }
+
+        private void cbDkNC3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dk3 = cbDkNC3.SelectedItem.ToString();
+        }
+
+        private void cbAO1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            and_or1 = cbAO1.SelectedItem.ToString();
+        }
+
+        private void cbAO2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            and_or2 = cbAO2.SelectedItem.ToString();
+        }
     }
 }
